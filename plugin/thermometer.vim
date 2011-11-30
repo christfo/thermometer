@@ -31,7 +31,7 @@ endfunction
 
 function s:HgGetStatusForFile()
   call s:HgSetupStatus()
-  let status = system('hg st ' . bufname('%'))
+  let status = system('hg --cwd ' . expand('%:p:h'). " st " . expand('%:t'))
   if v:shell_error != 0
     return "-"
   endif
